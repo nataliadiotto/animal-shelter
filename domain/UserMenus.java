@@ -1,8 +1,15 @@
 package domain;
 
+import domain.utils.AnimalType;
+
 public class UserMenus {
 
-    private final String mainMenu = """ 
+
+    public UserMenus() {
+    }
+
+    public void displayMainMenu() {
+        String mainMenu = """ 
                 -------------- MAIN MENU --------------
                 1. Register new animal
                 2. Edit the data of a registered animal
@@ -10,29 +17,21 @@ public class UserMenus {
                 4. List all registered animals
                 5. List animals by criteria (age, name, breed)
                 6. Exit
-                Enter the number of your option:
                 """;
-
-
-    private final String findAnimalMenu = """
-            -------------- FIND ANIMAL --------------
-            1. Find animal by first or last name
-            2. Find animal by gender
-            3. Find animal by age
-            4. Find animal by weight
-            5. Find animal by breed
-            6. Find animal by address
-            7. Return to main menu
-            """;
-
-    public UserMenus() {
-    }
-
-    public void displayMainMenu() {
         System.out.println(mainMenu);
     }
 
-    public void displayListAnimalsMenu(){
+    public void displayListAnimalsMenu(AnimalType animalType){
+        String findAnimalMenu = String.format("""
+                -------------- FIND %S BY --------------
+                1. First or last name
+                2. Gender
+                3. Age
+                4. Weight
+                5. Breed
+                6. Address
+                7. Return to main menu
+                """, animalType.name());
         System.out.println(findAnimalMenu);
     }
 

@@ -3,6 +3,7 @@ package domain;
 import domain.utils.AnimalType;
 import domain.utils.BiologicalSex;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class Animal {
@@ -154,17 +155,14 @@ public class Animal {
 
         @Override
         public String toString() {
-                return "Animal{" +
-                        "firstName='" + firstName + '\'' +
-                        ", lastName='" + lastName + '\'' +
-                        ", animalType=" + animalType +
-                        ", biologicalSex=" + biologicalSex +
-                        ", addressNumber=" + addressNumber +
-                        ", addressName='" + addressName + '\'' +
-                        ", addressCity='" + addressCity + '\'' +
-                        ", age=" + age +
-                        ", weight=" + weight +
-                        ", breed='" + breed + '\'' +
-                        '}';
+                return String.format(Locale.ENGLISH,
+                        "%s - %s - %s - %s - %.1f years old - %.1fkg - %s",
+                        getFullName(),
+                        getAnimalType(),
+                        getBiologicalSex(),
+                        getFullAddress(),
+                        getAge(),
+                        getWeight(),
+                        getBreed());
         }
 }

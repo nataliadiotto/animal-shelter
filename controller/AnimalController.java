@@ -1,11 +1,13 @@
 package controller;
 
+import domain.Animal;
 import domain.utils.AnimalType;
 import domain.utils.BiologicalSex;
 import domain.utils.Constants;
 import service.AnimalService;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 public class AnimalController {
@@ -79,6 +81,14 @@ public class AnimalController {
 
     }
 
+    public void listAll() {
+        animalService.findAll();
+    }
+    public void listAnimalsCriteria(Map<String, Object> filters) {
+        List<Animal> filteredAnimals = animalService.findByFilters(filters);
+        System.out.println(filteredAnimals);
+    }
+
 
     //validate if String fields were informed
     private String getValueOrDefault(String value) {
@@ -91,7 +101,5 @@ public class AnimalController {
     private void showError(String message) {
         System.err.println("Error: " + message);
     }
-
-
 
 }
